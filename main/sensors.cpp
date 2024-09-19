@@ -1,4 +1,4 @@
-#include "sensor.h"
+#include "sensors.h"
 #include <Wire.h>
 #include <math.h>
 #include <Arduino.h>
@@ -64,6 +64,15 @@ void Sensor::computeOrientation() {
   pitch = 0.92 * (pitch + (GyroY * elapsedTime)) + 0.08 * accAngleY;
   yaw   = gyroAngleZ;
 
+  Serial.print("roll:");
+  Serial.print(roll);
+  Serial.print("    ");
+
+  Serial.print("pitch:");
+  Serial.print(pitch);
+  Serial.print("    ");
+  Serial.print("yaw:");
+  Serial.println(yaw);
 
   // Currently the raw values are in degrees  per seconds, deg/s, so we need to multiply by sendonds (s) to get the angle in degrees
   gyroAngleX += GyroX * elapsedTime; // deg/s * s = deg
